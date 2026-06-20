@@ -6,7 +6,7 @@
 /*   By: ebin-ahm <ebin-ahm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/11 10:28:13 by ebin-ahm          #+#    #+#             */
-/*   Updated: 2026/06/20 13:06:56 by ebin-ahm         ###   ########.fr       */
+/*   Updated: 2026/06/20 14:24:48 by ebin-ahm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,10 +62,16 @@ int		parse_arguments(int argc, char **argv, t_table *table);
 
 /* init.c */
 int		init_simulation(t_table *table);
+
+/* thread.c */
 int		start_threads(t_table *table);
 
 /* routine.c */
 void	*philo_routine(void *argument);
+
+/* action.c */
+void	lone_philosopher(t_philo *philo);
+void	think_state(t_philo *philo);
 
 /* monitor.c */
 void	monitor_simulation(t_table *table);
@@ -73,10 +79,9 @@ void	monitor_simulation(t_table *table);
 /* state.c */
 int		simulation_stopped(t_table *table);
 void	stop_simulation(t_table *table);
-long	get_last_meal(t_philo *philo);
+void	get_meal_state(t_philo *philo, long *last_meal, int *meal_count);
 void	set_last_meal(t_philo *philo, long timestamp);
-int		get_meal_count(t_philo *philo);
-void	increase_meal_count(t_philo *philo);
+void	complete_meal(t_philo *philo);
 
 /* time.c */
 long	get_time_ms(void);
@@ -87,6 +92,9 @@ void	print_status(t_philo *philo, const char *status);
 void	print_death(t_philo *philo);
 
 /* cleanup.c */
+void	destroy_fork_mutexes(t_table *table, int count);
+void	destroy_meal_mutexes(t_table *table, int count);
+int		cleanup_init(t_table *table, int forks_ready);
 void	join_threads(t_table *table);
 void	cleanup_simulation(t_table *table);
 
