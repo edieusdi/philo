@@ -6,7 +6,7 @@
 /*   By: ebin-ahm <ebin-ahm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/11 10:28:13 by ebin-ahm          #+#    #+#             */
-/*   Updated: 2026/06/20 12:26:11 by ebin-ahm         ###   ########.fr       */
+/*   Updated: 2026/06/20 12:51:04 by ebin-ahm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,5 +25,7 @@
 #define SLEEP_MSG "is sleeping"
 #define THINK_MSG "is thinking"
 #define DEATH_MSG "died"
+
+typedef struct s_table t_table;
 
 #endif
